@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "company": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "maxLength": 256
+        },
+        "registration_number": {
+          "type": "string",
+          "pattern": "^[A-Za-z0-9]+$"
+        },
+        "addresses_attributes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "street": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "city": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "postal_code": {
+                "type": "string",
+                "maxLength": 255
+              },
+              "country": {
+                "type": "string",
+                "maxLength": 255
+              }
+            },
+            "required": [
+              "street",
+              "city",
+              "country"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "name",
+        "registration_number",
+        "addresses_attributes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "company"
+  ],
+  "additionalProperties": false
+}
