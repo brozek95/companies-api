@@ -4,7 +4,7 @@ class CompaniesController < ApplicationController
   before_action { validation_failed(errors) if errors.present? }
 
   def create
-    company.save ? created(company) : validation_failed(company.errors.full_messages)
+    company.save ? created(serialized_json) : validation_failed(company.errors.full_messages)
   end
 
   private
@@ -19,5 +19,9 @@ class CompaniesController < ApplicationController
 
   def company_params
     params.require(:company).permit(:name, :registration_number, addresses_attributes: [:street, :city, :postal_code, :country])
+  end
+
+  def serialized_json
+    company.as_json(include: :addresses)
   end
 end

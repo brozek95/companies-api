@@ -11,7 +11,8 @@
         },
         "registration_number": {
           "type": "string",
-          "pattern": "^[A-Za-z0-9]+$"
+          "pattern": "^[0-9]+$",
+          "maxLength": 255
         },
         "addresses_attributes": {
           "type": "array",

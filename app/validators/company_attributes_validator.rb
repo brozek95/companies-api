@@ -12,11 +12,7 @@ class CompanyAttributesValidator
   attr_reader :params
 
   def validator_errors
-    @validator_errors ||= JSON::Validator.fully_validate(
-      schema,
-      params.to_unsafe_h.slice(:company),
-      strict: true
-    )
+    @validator_errors ||= JSON::Validator.fully_validate(schema, params.to_unsafe_h.slice(:company))
   end
 
   def schema
