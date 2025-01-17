@@ -11,5 +11,4 @@ class Company < ApplicationRecord
             uniqueness: true,
             length: { maximum: DEFAULT_SQL_STRING_LENGTH },
             format: { with: /\A\d+\z/, message: "must contain only digits" }
-  validates :addresses, presence: true
 end

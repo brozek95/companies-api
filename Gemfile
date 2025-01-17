@@ -9,5 +9,10 @@ gem 'sidekiq'
 
 group :development, :test do
   gem "pry-byebug"
+  gem "rspec-rails"
   gem "rubocop-rails-omakase", require: false
+end
+
+group :test do
+  gem 'factory_bot_rails'
 end
