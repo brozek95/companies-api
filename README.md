@@ -1,24 +1,60 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
+# Requirements
 
-* Ruby version
+```
+Ruby 3.3
+Rails 8.0.1
+Sidekiq
+Redis
+MySql
+```
 
-* System dependencies
+Before starting, make sure that the MySql and Redis clients are installed and running on the machine.
 
-* Configuration
+# Installation
 
-* Database creation
+1. Copy config/database.sample.yml to config/database.yml and provide your MySql client username and password
 
-* Database initialization
+    ```
+    cp config/database.sample.yml config/database.yml
+    ```
 
-* How to run the test suite
+2. Setup database
 
-* Services (job queues, cache servers, search engines, etc.)
+    ```
+    rails db:create
+    rails db:migrate
+    ```
 
-* Deployment instructions
+3. Run rails server
 
-* ...
+    ```
+    bundle exec rails s
+    ```
+
+4. Run sidekiq
+
+    ```
+    bundle exec sidekiq
+    ```
+
+
+# Usage
+
+1. Run linter
+
+    ```
+    bundle exec rubocop
+    ```
+
+2. Run tests
+
+    ```
+    bundle exec rspec
+    ```
+
+3. Feel free to use Postman collection: companies-api.postman_collection.json
+
+    When using csv controller remember to add file in Body -> set key named 'file' -> change type to File -> add csv

@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "761b6857-84db-4366-9fa8-2234298dbf9e",
+		"name": "companies-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "create companies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"company\": {\n    \"name\": \"Random company name\",\n    \"registration_number\": \"12341234\", // SET UNIQUE NUMBER\n    \"addresses_attributes\": [\n      {\n        \"street\": \"Random Street 1\",\n        \"city\": \"Random City 1\",\n        \"country\": \"Random country 1\"\n      },\n      {\n        \"street\": \"Random Street 2\",\n        \"city\": \"Random City 2\",\n        \"postal_code\": \"123\",\n        \"country\": \"Random country 2\"\n      }\n    ]\n  }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/companies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "import companies",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": []
+						}
+					],
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/companies_import",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"companies_import"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

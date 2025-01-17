@@ -1,10 +1,10 @@
 class CompaniesImportController < ApplicationController
   def create
-    return bad_request('No file uploaded') unless file.present?
-    return validation_failed('Invalid file format - csv required') unless csv_file?
+    return bad_request("No file uploaded") unless file.present?
+    return validation_failed("Invalid file format - csv required") unless csv_file?
 
     handle_file
-    ok('File uploaded successfully, processing will start soon - check sidekiq logs for details.')
+    ok("File uploaded successfully, processing will start soon - check sidekiq logs for details.")
   end
 
   private
@@ -14,7 +14,7 @@ class CompaniesImportController < ApplicationController
   end
 
   def csv_file?
-    file.content_type == 'text/csv'
+    file.content_type == "text/csv"
   end
 
   def handle_file

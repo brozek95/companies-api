@@ -13,11 +13,11 @@ class CompaniesImportHandler
   attr_reader :uploaded_file
 
   def save_temp_file
-    File.open(file_path, 'wb') { |file| file.write(uploaded_file.read) }
+    File.open(file_path, "wb") { |file| file.write(uploaded_file.read) }
   end
 
   def file_path
-    @file_path ||= Rails.root.join('tmp', uploaded_file.original_filename)
+    @file_path ||= Rails.root.join("tmp", uploaded_file.original_filename)
   end
 
   def process_file

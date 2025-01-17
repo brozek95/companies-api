@@ -4,10 +4,12 @@ describe CompaniesImportHandler do
   let(:uploaded_file) { instance_double(ActionDispatch::Http::UploadedFile) }
   let(:file_name) { 'file.csv' }
   let(:temp_file_path) { Rails.root.join('tmp', file_name) }
+  let(:job) { CompaniesImportJob }
 
   before do
     allow(uploaded_file).to receive(:read).and_return('file content')
     allow(uploaded_file).to receive(:original_filename).and_return(file_name)
+    allow(job).to receive(:perform_later)
   end
 
   it 'saves temp file' do
@@ -17,7 +19,7 @@ describe CompaniesImportHandler do
   end
 
   it 'triggers CompaniesImportJob' do
-    expect(CompaniesImportJob).to receive(:perform_later).with(temp_file_path.to_s)
+    expect(job).to receive(:perform_later).with(temp_file_path.to_s)
     handler.call
   end
 end

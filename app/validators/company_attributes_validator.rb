@@ -16,6 +16,6 @@ class CompanyAttributesValidator
   end
 
   def schema
-    JSON.parse(File.read(Rails.root.join('app/schemas/company_create_schema.json')))
+    JSON.parse(File.read(Rails.root.join("app/schemas/company_create_schema.json")))
   end
 end

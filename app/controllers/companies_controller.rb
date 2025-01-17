@@ -16,7 +16,7 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.require(:company).permit(:name, :registration_number, addresses_attributes: [:street, :city, :postal_code, :country])
+    params.require(:company).permit(:name, :registration_number, addresses_attributes: [ :street, :city, :postal_code, :country ])
   end
 
   def serialized_json

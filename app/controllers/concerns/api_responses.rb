@@ -7,11 +7,11 @@ module ApiResponses
     render json: data, status: :created
   end
 
-  def bad_request(errors = [{ title: 'Invalid request' }])
+  def bad_request(errors = [ { title: "Invalid request" } ])
     render json: { errors: errors }, status: :bad_request
   end
 
-  def internal_server_error(errors = [{ title: 'Internal server error' }])
+  def internal_server_error(errors = [ { title: "Internal server error" } ])
     render json: { errors: errors }, status: :internal_server_error
   end
 

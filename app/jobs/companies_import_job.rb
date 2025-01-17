@@ -1,9 +1,11 @@
-require 'csv'
+require "csv"
 
 class CompaniesImportJob < ApplicationJob
   CSV_FIRST_ROW_INDEX = 2
 
   queue_as :default
+  retry_on StandardError, wait: 5.seconds, attempts: 0
+  discard_on StandardError
 
   def perform(file_path)
     ActiveRecord::Base.transaction do
@@ -32,7 +34,7 @@ class CompaniesImportJob < ApplicationJob
 
   def attributes(row, model_name)
     COMPANIES_IMPORT[:models][model_name][:attributes].map do |attribute|
-      [attribute.first, row[attribute.second]]
+      [ attribute.first, row[attribute.second] ]
     end.to_h
   end
 
