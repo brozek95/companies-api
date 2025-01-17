@@ -1,0 +1,24 @@
+# This is sample file, you need to create a new file with name database.yml
+
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 50
+  username: root
+  password:
+  socket: /tmp/mysql.sock
+  host: '127.0.0.1'
+
+development:
+  <<: *default
+  database: companies-api_development
+
+test:
+  <<: *default
+  database: companies-api_test
+  username: root
+  password:
+
+production:
+  <<: *default
+  database: companies-api_production

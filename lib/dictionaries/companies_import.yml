@@ -1,0 +1,13 @@
+# This file is used to map the columns of the CSV file to the attributes
+# Attributes keys represents the attributes of the model and the values are the column names of the CSV file
+models:
+  company:
+    attributes:
+      name: name
+      registration_number: registration_number
+  address:
+    attributes:
+      street: street
+      city: city
+      postal_code: postal_code
+      country: country

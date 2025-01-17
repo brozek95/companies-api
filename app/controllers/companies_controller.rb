@@ -1,6 +1,4 @@
 class CompaniesController < ApplicationController
-  rescue_from StandardError, with: :internal_server_error
-
   before_action { validation_failed(errors) if errors.present? }
 
   def create
